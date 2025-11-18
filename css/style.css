@@ -1,0 +1,463 @@
+:root {
+    --sidebar-width: 300px;
+    --sidebar-collapsed-width: 60px;
+    --navbar-height: 48px;
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #e74c3c;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ecf0f1;
+}
+
+/* Navbar - Header principal */
+.navbar {
+    min-height: var(--navbar-height) !important;
+    height: var(--navbar-height) !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    box-sizing: border-box;
+}
+
+.navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    min-height: var(--navbar-height);
+    height: var(--navbar-height);
+}
+
+.navbar-brand {
+    font-size: 1.1rem !important;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+    line-height: 1.2 !important;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.navbar-text {
+    font-size: 0.875rem;
+    padding: 0.25rem 0;
+    margin: 0;
+}
+
+.navbar .btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.2;
+}
+
+.navbar .btn-sm {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+}
+
+/* Sidebar */
+.sidebar {
+    background: var(--primary-color);
+    color: white;
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    width: var(--sidebar-width) !important;
+    min-width: var(--sidebar-width) !important;
+    max-width: var(--sidebar-width) !important;
+    flex: 0 0 var(--sidebar-width) !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor para el contenido scrolleable del sidebar (sin el header) */
+.sidebar-content {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
+}
+
+/* Sobrescribir clases de Bootstrap para el sidebar */
+.sidebar.col-md-3,
+.sidebar.col-lg-2 {
+    width: var(--sidebar-width) !important;
+    min-width: var(--sidebar-width) !important;
+    max-width: var(--sidebar-width) !important;
+    flex: 0 0 var(--sidebar-width) !important;
+}
+
+/* Cuando el sidebar está colapsado */
+.sidebar-collapsed .sidebar {
+    width: var(--sidebar-collapsed-width) !important;
+    min-width: var(--sidebar-collapsed-width) !important;
+    max-width: var(--sidebar-collapsed-width) !important;
+    flex: 0 0 var(--sidebar-collapsed-width) !important;
+}
+
+/* Sobrescribir clases de Bootstrap cuando está colapsado */
+.sidebar-collapsed .sidebar.col-md-3,
+.sidebar-collapsed .sidebar.col-lg-2 {
+    width: var(--sidebar-collapsed-width) !important;
+    min-width: var(--sidebar-collapsed-width) !important;
+    max-width: var(--sidebar-collapsed-width) !important;
+    flex: 0 0 var(--sidebar-collapsed-width) !important;
+}
+
+/* Ocultar contenido del sidebar cuando está colapsado */
+.sidebar-collapsed .sidebar .card {
+    display: none !important;
+}
+
+/* Mantener visible solo el botón de toggle cuando está colapsado */
+.sidebar-collapsed .sidebar .sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 5px;
+    text-align: center;
+    height: 46px !important;
+    max-height: 46px !important;
+    min-height: 46px !important;
+    flex-shrink: 0;
+    flex-grow: 0;
+    overflow: hidden;
+}
+
+.sidebar-collapsed .sidebar .sidebar-header button {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.sidebar-collapsed .sidebar .sidebar-header button i {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Ajustar main-content */
+.main-content {
+    transition: all 0.3s ease;
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    position: relative;
+    height: 100%;
+}
+
+/* Sobrescribir clases de Bootstrap para main-content */
+.main-content.col-md-9,
+.main-content.col-lg-10 {
+    flex: 1 1 auto !important;
+    max-width: none !important;
+    width: auto !important;
+}
+
+.sidebar-collapsed .main-content {
+    margin-left: 0;
+}
+
+.sidebar-header {
+    padding: 8px 10px;
+    border-bottom: 1px solid #34495e;
+    text-align: right;
+    position: sticky;
+    top: 0;
+    background: var(--primary-color);
+    z-index: 10;
+    height: 46px !important;
+    max-height: 46px !important;
+    min-height: 46px !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    flex-grow: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Evitar que cualquier elemento dentro del header expanda su altura */
+.sidebar-header * {
+    max-height: 100%;
+    box-sizing: border-box;
+}
+
+/* Sobrescribir estilos de Bootstrap para botones dentro del header */
+.sidebar-header .btn {
+    margin: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Asegurar que el ícono del botón no cause problemas de altura */
+.sidebar-header .btn i {
+    line-height: 1 !important;
+    vertical-align: middle !important;
+}
+
+/* Cuando el sidebar está expandido, mantener el header normal */
+body:not(.sidebar-collapsed) .sidebar .sidebar-header {
+    text-align: right;
+    justify-content: flex-end;
+    height: 46px !important;
+    max-height: 46px !important;
+    min-height: 46px !important;
+    flex-shrink: 0;
+    flex-grow: 0;
+    overflow: hidden;
+}
+
+/* Asegurar que el botón del header tenga un tamaño apropiado cuando está expandido */
+body:not(.sidebar-collapsed) .sidebar .sidebar-header button {
+    height: 30px;
+    padding: 4px 8px;
+    flex-shrink: 0;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mostrar contenido cuando el sidebar está expandido */
+body:not(.sidebar-collapsed) .sidebar .card {
+    display: block !important;
+}
+
+.sidebar .card {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    flex-shrink: 0;
+}
+
+/* Asegurar que el contenido del sidebar sea scrolleable pero el header se mantenga fijo */
+.sidebar > .card {
+    flex-shrink: 0;
+}
+
+.sidebar .card-header {
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #34495e;
+    font-weight: 600;
+}
+
+/* Asegurar que el mapa ocupe todo el espacio */
+#map.map {
+    height: 100%;
+    width: 100%;
+    background-color: #f8f9fa;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+/* El mapa dentro del main-content debe ocupar todo el espacio */
+.main-content #map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/* Forzar visibilidad del mapa */
+#map {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Controles del mapa */
+.map-controls {
+    position: absolute;
+    top: calc(var(--navbar-height) + 10px);
+    right: 10px;
+    z-index: 1000;
+}
+
+.map-controls .btn-group-vertical .btn {
+    border: 1px solid #ccc;
+    margin-bottom: 2px;
+}
+
+/* Loading */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+}
+
+.spinner-container {
+    text-align: center;
+}
+
+/* Estilos para diferentes roles */
+.admin-feature {
+    border-left: 3px solid #e74c3c;
+}
+
+.editor-feature {
+    border-left: 3px solid #f39c12;
+}
+
+.viewer-feature {
+    border-left: 3px solid #3498db;
+}
+
+/* Popups personalizados */
+.ol-popup {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+    bottom: 12px;
+    left: -50px;
+    min-width: 280px;
+}
+
+.ol-popup:after, .ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.ol-popup:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+}
+
+.ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}
+
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+}
+
+.ol-popup-closer:after {
+    content: "✖";
+}
+
+/* Tablas de información */
+.feature-table {
+    width: 100%;
+    font-size: 12px;
+}
+
+.feature-table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.feature-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Ajustar el contenedor principal para usar flexbox */
+.navbar ~ .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    height: calc(100vh - var(--navbar-height));
+    overflow: hidden;
+}
+
+.navbar ~ .container-fluid > .row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Sobrescribir estilos de Bootstrap para el sidebar en el contenedor */
+.navbar ~ .container-fluid > .row > .sidebar {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.navbar ~ .container-fluid > .row > .main-content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        z-index: 1001;
+        height: 100vh;
+        transform: translateX(-100%);
+        width: var(--sidebar-width) !important;
+        min-width: var(--sidebar-width) !important;
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    .container-fluid > .row {
+        flex-wrap: wrap;
+    }
+}
+
+/* Estilos para formularios de edición */
+.edit-form {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.edit-form .form-group {
+    margin-bottom: 8px;
+}
+
+.edit-form label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.edit-form input, .edit-form select {
+    font-size: 12px;
+    padding: 4px 8px;
+}
+
+

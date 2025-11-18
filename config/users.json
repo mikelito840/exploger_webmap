@@ -1,0 +1,105 @@
+{
+  "users": {
+    "admin": {
+      "password": "admin123",
+      "role": "admin",
+      "name": "Administrador del Sistema",
+      "email": "admin@geologia.com",
+      "permissions": ["read", "write", "delete", "manage_users", "import_data", "export_data"],
+      "created_at": "2024-01-01",
+      "last_login": "2024-10-11",
+      "active": true
+    },
+    "editor": {
+      "password": "editor123",
+      "role": "editor",
+      "name": "Editor Geológico Principal",
+      "email": "editor@geologia.com",
+      "permissions": ["read", "write", "export_data"],
+      "created_at": "2024-01-01",
+      "last_login": "2024-10-10",
+      "active": true
+    },
+    "viewer": {
+      "password": "viewer123",
+      "role": "viewer",
+      "name": "Usuario de Consulta",
+      "email": "viewer@geologia.com",
+      "permissions": ["read"],
+      "created_at": "2024-01-01",
+      "last_login": "2024-10-09",
+      "active": true
+    },
+    "geologo1": {
+      "password": "geo123",
+      "role": "editor",
+      "name": "Dr. María González",
+      "email": "m.gonzalez@geologia.com",
+      "permissions": ["read", "write"],
+      "created_at": "2024-03-15",
+      "last_login": "2024-10-08",
+      "active": true,
+      "especialidad": "Geología Estructural"
+    },
+    "geologo2": {
+      "password": "geo456",
+      "role": "editor",
+      "name": "Lic. Carlos Rodríguez",
+      "email": "c.rodriguez@geologia.com",
+      "permissions": ["read", "write"],
+      "created_at": "2024-04-20",
+      "last_login": "2024-10-07",
+      "active": true,
+      "especialidad": "Mineralogía"
+    },
+    "consultor1": {
+      "password": "cons123",
+      "role": "viewer",
+      "name": "Ing. Ana Martínez",
+      "email": "a.martinez@consultoria.com",
+      "permissions": ["read"],
+      "created_at": "2024-05-10",
+      "last_login": "2024-10-06",
+      "active": true,
+      "empresa": "Geoconsult S.A."
+    }
+  },
+  "roles": {
+    "admin": {
+      "name": "Administrador",
+      "description": "Acceso completo al sistema",
+      "permissions": ["read", "write", "delete", "manage_users", "import_data", "export_data", "system_config"]
+    },
+    "editor": {
+      "name": "Editor Geológico",
+      "description": "Puede visualizar y editar datos geológicos",
+      "permissions": ["read", "write", "export_data"]
+    },
+    "viewer": {
+      "name": "Visualizador",
+      "description": "Solo puede visualizar datos",
+      "permissions": ["read"]
+    }
+  },
+  "system_config": {
+    "max_users": 50,
+    "session_timeout": 3600,
+    "allow_registration": false,
+    "default_role": "viewer",
+    "password_policy": {
+      "min_length": 8,
+      "require_uppercase": true,
+      "require_numbers": true,
+      "require_special_chars": false
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2024-10-11",
+    "created_by": "Sistema Geológico",
+    "total_users": 6,
+    "active_users": 6
+  }
+}
+
+
